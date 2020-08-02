@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minTurn: -10
   maxTurn: 10
+  range: 5
 --- !u!61 &536453675
 BoxCollider2D:
   m_ObjectHideFlags: 0
