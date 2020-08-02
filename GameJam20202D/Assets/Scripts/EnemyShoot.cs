@@ -19,8 +19,12 @@ public class EnemyShoot : MonoBehaviour
     void Update()
     {
         //Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y + 5);
-        Debug.DrawRay(this.transform.position, player.transform.position, Color.red);
-        Physics2D.Raycast(this.transform.position, player.transform.position);
+        RaycastHit2D ray;
+        ray = Physics2D.Linecast(this.transform.position, player.transform.position);
+        Debug.DrawLine(ray.point, transform.position, Color.red);
+        print(ray.point);
+        
+        
 
     }
 }
