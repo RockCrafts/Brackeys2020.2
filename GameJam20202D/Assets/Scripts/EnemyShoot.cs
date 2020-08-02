@@ -24,7 +24,14 @@ public class EnemyShoot : MonoBehaviour
         if(ray.collider != null)
         {
             RewindCore rewindCore = ray.collider.gameObject.GetComponent<RewindCore>();
-            rewindCore.startRewind();
+            if (rewindCore.getRewinding())
+            {
+                return;
+            }
+            else
+            {
+                rewindCore.startRewind();
+            }
         }
     }
 

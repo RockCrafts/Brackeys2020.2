@@ -69,7 +69,7 @@ public class RewindCore : MonoBehaviour
         points.Insert(0, new TimePoint(transform.position, transform.rotation));
 
     }
-    bool getRewinding()
+    public bool getRewinding()
     {
         return rewinding;
     }
