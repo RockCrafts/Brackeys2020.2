@@ -6,17 +6,36 @@ public class PlayerController : MonoBehaviour
 {
     SpriteRenderer sr;
     Animator a;
-    
+    Rigidbody2D rb;
+    bool isJumping = false;
+    bool isDucking = false;
+    bool isGrounded = false;
+    public LayerMask ground;
+    public float jumpForce = 400f;
+    public float speed = 5f;
+    [SerializeField] //Collider when ducking
+    BoxCollider2D duckCollider;
+    [SerializeField] //Collider when not ducking.
+    BoxCollider2D normCollider;
+
+    public GameObject groundCheck;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         a = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
+        
+        float x = Input.GetAxisRaw("Horizontal");   
+        float y = Input.GetAxisRaw("Vertical");
+
+        float DistanceToTheGround = GetComponent<Collider2D>().bounds.extents.y;
+        isGrounded = Physics2D.CircleCast(transform.position, 0.6f, Vector3.down, DistanceToTheGround+ 0.01f, ground);
+        
        a.SetFloat("Direction", x);
         if (x == 0)
         {
@@ -34,7 +53,43 @@ public class PlayerController : MonoBehaviour
             }
            a.SetBool("Running", true);
         }
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            isJumping = true;
+        }
+        if (y < 0)
+        {
+            if (!isDucking) duck();
+        }
+        else
+        {
+            if (isDucking) unDuck();
+        }
         
-        transform.Translate(Vector2.right * x * 5f * Time.deltaTime);
+        transform.Translate(Vector2.right * x * speed * Time.deltaTime);
+    }
+    private void FixedUpdate()
+    {
+        if (isJumping)
+        {
+            jump();
+        }
+    }
+    void jump()
+    {
+        rb.AddForce(Vector2.up * jumpForce);
+        isJumping = false;
+    }
+    void duck()
+    {
+        normCollider.enabled = false;
+        duckCollider.enabled = true;
+        isDucking = true;
+    }
+    void unDuck()
+    {
+        normCollider.enabled = true;
+        duckCollider.enabled = false;
+        isDucking = false;
     }
 }
