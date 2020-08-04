@@ -94,12 +94,14 @@ public class PlayerController : MonoBehaviour
     {
         normCollider.enabled = false;
         duckCollider.enabled = true;
+        a.SetBool("Crouching", true);
         isDucking = true;
     }
     void unDuck()
     {
         normCollider.enabled = true;
         duckCollider.enabled = false;
+        a.SetBool("Crouching", false);
         isDucking = false;
     }
 }
