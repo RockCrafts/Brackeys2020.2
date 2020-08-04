@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool hasKey = false;
     SpriteRenderer sr;
     Animator a;
     Rigidbody2D rb;
