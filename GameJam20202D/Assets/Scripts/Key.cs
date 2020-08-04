@@ -14,6 +14,7 @@ public class Key : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerController>().hasKey = true;
+            Destroy(this.gameObject);
         }
     }
 
