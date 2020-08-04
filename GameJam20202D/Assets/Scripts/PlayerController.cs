@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     bool isJumping = false;
     bool isDucking = false;
     bool isGrounded = false;
+    bool gCheck1 = false;
+    bool gCheck2 = false;
+    bool gCheck3 = false;
     public LayerMask ground;
     public float jumpForce = 400f;
     public float speed = 5f;
@@ -34,9 +37,16 @@ public class PlayerController : MonoBehaviour
         float y = Input.GetAxisRaw("Vertical");
 
         float DistanceToTheGround = GetComponent<Collider2D>().bounds.extents.y;
-        isGrounded = Physics2D.CircleCast(transform.position, 0.6f, Vector3.down, DistanceToTheGround+ 0.01f, ground);
-        
-       a.SetFloat("Direction", x);
+        float DistanceToSide = GetComponent<Collider2D>().bounds.extents.x;
+        gCheck1 = Physics2D.Raycast(transform.position, Vector3.down, DistanceToTheGround+ 0.01f, ground);
+        Vector3 VDisSide = new Vector3(DistanceToSide-0.05f, 0, 0);
+
+        gCheck2 = Physics2D.Raycast(transform.position+ VDisSide, Vector3.down, DistanceToTheGround + 0.01f, ground);
+        gCheck3 = Physics2D.Raycast(transform.position-VDisSide, Vector3.down, DistanceToTheGround + 0.01f, ground);
+        //Debug.DrawRay(transform.position - VDisSide, Vector3.down, Color.red);
+        //Debug.DrawRay(transform.position + VDisSide, Vector3.down, Color.blue);
+        isGrounded = gCheck1 || gCheck2 || gCheck3;
+        a.SetFloat("Direction", x);
         if (x == 0)
         {
            a.SetBool("Running", false);
