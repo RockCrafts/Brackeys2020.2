@@ -21,8 +21,8 @@ public class Bullet : MonoBehaviour
 		Destroy(gameObject, 3f);
 	}
 
-	void OnTriggerEnter2D(Collider2D other)
-	{
+    private void OnCollisionEnter2D(Collision2D other)
+    {
 		if (other.gameObject.tag == "Player")
 		{
 			RewindCore rewindCore = other.gameObject.GetComponent<RewindCore>();
@@ -35,5 +35,13 @@ public class Bullet : MonoBehaviour
 				rewindCore.startRewind();
 			}
 		}
+		else if (other.gameObject.tag == "Enemy")
+		{
+			return;
+        }
+        else
+        {
+			Destroy(this.gameObject);
+        }
 	}
 }
