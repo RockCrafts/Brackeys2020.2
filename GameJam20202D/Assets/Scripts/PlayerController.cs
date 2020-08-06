@@ -20,13 +20,16 @@ public class PlayerController : MonoBehaviour
     BoxCollider2D duckCollider;
     [SerializeField] //Collider when not ducking.
     BoxCollider2D normCollider;
-
+    float DistanceToSide;
+    float DistanceToTheGround;
     public GameObject groundCheck;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         a = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        DistanceToTheGround = normCollider.bounds.extents.y + duckCollider.bounds.extents.y;
+        DistanceToSide = normCollider.bounds.extents.x;
     }
 
     
@@ -36,16 +39,20 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");   
         float y = Input.GetAxisRaw("Vertical");
 
-        float DistanceToTheGround = GetComponent<Collider2D>().bounds.extents.y;
-        float DistanceToSide = GetComponent<Collider2D>().bounds.extents.x;
+        
+       
+        
+
         gCheck1 = Physics2D.Raycast(transform.position, Vector3.down, DistanceToTheGround+ 0.01f, ground);
         Vector3 VDisSide = new Vector3(DistanceToSide-0.05f, 0, 0);
 
         gCheck2 = Physics2D.Raycast(transform.position+ VDisSide, Vector3.down, DistanceToTheGround + 0.01f, ground);
         gCheck3 = Physics2D.Raycast(transform.position-VDisSide, Vector3.down, DistanceToTheGround + 0.01f, ground);
-        //Debug.DrawRay(transform.position - VDisSide, Vector3.down, Color.red);
-        //Debug.DrawRay(transform.position + VDisSide, Vector3.down, Color.blue);
+        Debug.DrawRay(transform.position - VDisSide, Vector3.down, Color.red);
+        Debug.DrawRay(transform.position + VDisSide, Vector3.down, Color.blue);
+        Debug.DrawRay(transform.position, Vector3.down);
         isGrounded = gCheck1 || gCheck2 || gCheck3;
+        print(isGrounded);
         a.SetFloat("Direction", x);
         if (x == 0)
         {
