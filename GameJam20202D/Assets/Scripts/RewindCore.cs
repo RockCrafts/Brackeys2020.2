@@ -7,6 +7,8 @@ public class RewindCore : MonoBehaviour
     private bool rewinding = false;
     List<TimePoint> points;
     Rigidbody2D rb;
+    Vector2 velocity;
+    float angularVel;
     public float timeToRecord = 5f;
     // Start is called before the first frame update
     void Start()
@@ -50,15 +52,20 @@ public class RewindCore : MonoBehaviour
     }
     [ContextMenu("startRewind")]
     public void startRewind() {
+        velocity = rb.velocity;
+        angularVel = rb.angularVelocity;
         rewinding = true;
         if (rb == null) return;
         rb.isKinematic = true;
+
     }
     private void stopRewind()
     {
         rewinding = false;
         if (rb == null) return;
         rb.isKinematic = false;
+        rb.velocity = velocity;
+        rb.angularVelocity = angularVel;
     }
     void Record()
     {
