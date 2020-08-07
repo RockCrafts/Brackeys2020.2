@@ -10,6 +10,7 @@ public class RewindCore : MonoBehaviour
     Vector2 velocity;
     float angularVel;
     public float timeToRecord = 5f;
+    public bool stopedRewinding = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +67,7 @@ public class RewindCore : MonoBehaviour
         rb.isKinematic = false;
         rb.velocity = velocity;
         rb.angularVelocity = angularVel;
+        stopedRewinding = true;
     }
     void Record()
     {

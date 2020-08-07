@@ -24,11 +24,13 @@ public class PlayerController : MonoBehaviour
     float DistanceToSide;
     float DistanceToTheGround;
     public GameObject groundCheck;
+    public RewindCore rc;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         a = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        rc = GetComponent<RewindCore>();
         DistanceToTheGround = normCollider.bounds.extents.y + duckCollider.bounds.extents.y;
         DistanceToSide = normCollider.bounds.extents.x;
     }
@@ -82,6 +84,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             if (isDucking) unDuck();
+        }
+
+        if (rc.stopedRewinding)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                jump();
+                rc.stopedRewinding = false;
+            }
         }
         
         transform.Translate(Vector2.right * x * speed * Time.deltaTime);
