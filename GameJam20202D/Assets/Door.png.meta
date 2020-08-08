@@ -8,6 +8,15 @@ TextureImporter:
   - first:
       213: 436563815456543028
     second: Door_1
+  - first:
+      213: -2302327988271558475
+    second: Door_0
+  - first:
+      213: 2220189004445039950
+    second: Door_1
+  - first:
+      213: -8689009931745917929
+    second: Door_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -179,8 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6f2e24006c195840800000000000000
-      internalID: 5213229242370633579
+      spriteID: 5b052a694ec7c00e0800000000000000
+      internalID: -2302327988271558475
       vertices: []
       indices: 
       edges: []
@@ -200,8 +209,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43193162a7cfe0600800000000000000
-      internalID: 436563815456543028
+      spriteID: e4dbc20f222bfce10800000000000000
+      internalID: 2220189004445039950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7148170e08f6a6780800000000000000
+      internalID: -8689009931745917929
       vertices: []
       indices: 
       edges: []
