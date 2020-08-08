@@ -335,8 +335,8 @@ Canvas:
   m_GameObject: {fileID: 264762189}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 2
+  m_Camera: {fileID: 361558039}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -345,7 +345,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &264762193
 RectTransform:
@@ -356,7 +356,7 @@ RectTransform:
   m_GameObject: {fileID: 264762189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1781613594}
   - {fileID: 1989237640}
@@ -366,9 +366,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 613.5, y: 299}
+  m_SizeDelta: {x: 1227, y: 598}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &361558038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -438,6 +438,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd3d97942d075f44a8a1e443cb3c6ffa, type: 3}
+--- !u!20 &361558039 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 361092651, guid: bd3d97942d075f44a8a1e443cb3c6ffa,
+    type: 3}
+  m_PrefabInstance: {fileID: 361558038}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &436936139
 GameObject:
   m_ObjectHideFlags: 0
