@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RewindCore : MonoBehaviour
 {
-    private bool rewinding = false;
+    public bool rewinding = false;
     List<TimePoint> points;
     Rigidbody2D rb;
     Vector2 velocity;
