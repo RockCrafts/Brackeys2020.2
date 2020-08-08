@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
     float DistanceToTheGround;
     public GameObject groundCheck;
     public RewindCore rc;
+    public Text text;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -55,7 +58,6 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(transform.position + VDisSide, Vector3.down, Color.blue);
         Debug.DrawRay(transform.position, Vector3.down);
         isGrounded = gCheck1 || gCheck2 || gCheck3;
-        print(isGrounded);
         a.SetFloat("Direction", x);
         if (x == 0)
         {
@@ -96,6 +98,15 @@ public class PlayerController : MonoBehaviour
         }
         
         transform.Translate(Vector2.right * x * speed * Time.deltaTime);
+
+        if (rc.getRewinding())
+        {
+            text.text = "rewinding";
+        }
+        else
+        {
+            text.text = "";
+        }
     }
     private void FixedUpdate()
     {
