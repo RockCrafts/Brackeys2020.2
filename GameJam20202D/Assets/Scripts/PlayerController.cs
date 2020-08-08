@@ -45,7 +45,11 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");   
         float y = Input.GetAxisRaw("Vertical");
 
-        if (GetComponent<RewindCore>().getRewinding()) return;
+        if (GetComponent<RewindCore>().getRewinding())
+        {
+            x = 0;
+            y = 0;
+        }
        
         
 
