@@ -18,8 +18,8 @@ public class Timer : MonoBehaviour
     void Update()
     {
         text.text = "Time: " + timer;
-        
-        if(timer == 5f)
+
+        if (timer == 5f)
         {
             timer = 0f;
         }
