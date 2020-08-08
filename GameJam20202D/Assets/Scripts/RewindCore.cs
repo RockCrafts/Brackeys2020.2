@@ -11,7 +11,6 @@ public class RewindCore : MonoBehaviour
     float angularVel;
     public float timeToRecord = 5f;
     public bool stopedRewinding = false;
-    public bool rewindTrue;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,12 +30,10 @@ public class RewindCore : MonoBehaviour
     {
         if (rewinding)
         {
-            rewindTrue = true;
             Rewind();
         }
         else
         {
-            rewindTrue = false;
             Record();
         }
     }

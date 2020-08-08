@@ -45,11 +45,7 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");   
         float y = Input.GetAxisRaw("Vertical");
 
-        if (GetComponent<RewindCore>().getRewinding())
-        {
-            x = 0;
-            y = 0;
-        }
+        if (GetComponent<RewindCore>().getRewinding()) return;
        
         
 
@@ -103,22 +99,20 @@ public class PlayerController : MonoBehaviour
         
         transform.Translate(Vector2.right * x * speed * Time.deltaTime);
 
-
+        if (rc.getRewinding())
+        {
+            text.text = "rewinding";
+        }
+        else
+        {
+            text.text = "";
+        }
     }
     private void FixedUpdate()
     {
         if (isJumping)
         {
             jump();
-        }
-        if (rc.rewinding == true)
-        {
-            text.text = "rewinding";
-            print("rewind");
-        }
-        else
-        {
-            text.text = "";
         }
     }
     void jump()
